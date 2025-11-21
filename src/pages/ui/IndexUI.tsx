@@ -35,24 +35,54 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
       showCart={true}
     >
       {/* Hero Section */}
-      <section className="bg-background py-12 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Discover Our Products
+      <section className="relative bg-gradient-to-br from-primary/10 via-accent/5 to-background py-20 border-b overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="https://ptgmltivisbtvmoxwnhd.supabase.co/storage/v1/object/public/product-images/5188ffae-7246-40ef-9bc2-7d75326890f4/dogs-hero.jpg"
+            alt="Dogs background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
+            <span className="text-primary font-semibold text-sm">🐾 Tu mejor amigo te espera</span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+            Encuentra a tu<br/>
+            <span className="text-primary">Compañero Perfecto</span>
           </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Find the best products at the best price. Guaranteed quality and fast shipping.
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Cachorros de raza con garantía de salud. Certificados, vacunados y listos para unirse a tu familia.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex items-center gap-2 text-foreground/80">
+              <span className="text-2xl">✓</span>
+              <span className="font-medium">Garantía de salud</span>
+            </div>
+            <div className="flex items-center gap-2 text-foreground/80">
+              <span className="text-2xl">✓</span>
+              <span className="font-medium">Vacunados</span>
+            </div>
+            <div className="flex items-center gap-2 text-foreground/80">
+              <span className="text-2xl">✓</span>
+              <span className="font-medium">Certificados</span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Collections Section */}
       {!loadingCollections && collections.length > 0 && (
-        <section className="py-12 bg-muted/30">
+        <section className="py-16 bg-gradient-to-b from-muted/20 to-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-foreground mb-8">
-              Our Collections
-            </h2>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-foreground mb-3">
+                🐶 Nuestras Colecciones
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Explora nuestras selecciones especiales de cachorros
+              </p>
+            </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {collections.map((collection) => (
@@ -68,21 +98,30 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
       )}
 
       {/* Products Section */}
-      <section className="py-12">
+      <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-foreground">
-              {selectedCollectionId 
-                ? `Products from ${collections.find(c => c.id === selectedCollectionId)?.name || 'Collection'}` 
-                : 'Featured Products'
-              }
-            </h2>
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-3xl font-bold text-foreground mb-2">
+                {selectedCollectionId 
+                  ? `${collections.find(c => c.id === selectedCollectionId)?.name || 'Colección'}` 
+                  : '🌟 Cachorros Destacados'
+                }
+              </h2>
+              <p className="text-muted-foreground">
+                {selectedCollectionId 
+                  ? 'Explora esta selección especial' 
+                  : 'Los cachorros más adorables y saludables'
+                }
+              </p>
+            </div>
             {selectedCollectionId && (
               <Button 
-                variant="outline" 
+                variant="default" 
                 onClick={handleShowAllProducts}
+                className="bg-primary hover:bg-primary/90"
               >
-                See All Products
+                Ver Todos los Cachorros
               </Button>
             )}
           </div>
@@ -101,8 +140,9 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                No products available.
+              <span className="text-6xl mb-4 block">🐕</span>
+              <p className="text-muted-foreground text-lg">
+                No hay cachorros disponibles en este momento.
               </p>
             </div>
           )}

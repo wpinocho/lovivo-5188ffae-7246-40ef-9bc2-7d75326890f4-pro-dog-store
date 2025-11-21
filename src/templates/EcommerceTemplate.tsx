@@ -106,8 +106,8 @@ export const EcommerceTemplate = ({
           {/* Brand */}
           <div>
             <BrandLogoLeft />
-            <p className="mt-4 text-white/70">
-              Your trusted online store
+            <p className="mt-4 text-white/70 max-w-xs">
+              🐾 Tu tienda de confianza para encontrar al cachorro perfecto. Garantía de salud y felicidad.
             </p>
           </div>
 
@@ -138,7 +138,7 @@ export const EcommerceTemplate = ({
         </div>
 
         <div className="mt-8 pt-8 border-t border-white/20 text-center text-white/70">
-          <p>&copy; 2024 Your Store. All rights reserved.</p>
+          <p>&copy; 2024 PuppyStore. Todos los derechos reservados. Hecho con ❤️ para los amantes de los perros.</p>
         </div>
       </div>
     </div>
